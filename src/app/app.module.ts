@@ -4,15 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
+import { LogCatComponent } from './log-cat/log-cat.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    LogCatComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

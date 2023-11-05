@@ -1,0 +1,53 @@
+<div class="title">Log a Cat</div>
+<div class="cat-form-container">
+    <form [formGroup]="catForm"(ngSubmit)="logCat()" >
+        <span class = "description">
+            Use the form below to log a captured cat. <br>
+            Please include any updated medical history.
+        </span>
+        <br>
+        <br>
+
+        <div class="form-group">
+            <label for="microchipNumber" class="form-label">Microchip Number</label>
+            <input type="text" class="form-control" id="microchipNumber"
+                formControlName="microchipNumber" [ngClass]="{ 'is-invalid': submitted && f['microchipNumber'].errors }">
+            <div *ngIf="submitted && f['microchipNumber'].errors" class="invalid-feedback">
+                <div *ngIf="f['microchipNumber'].errors['required']">Microchip is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" matTooltip="Enter the cat's name, what it's called or responds to." matTooltipPosition="left"
+                formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Cat Name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" matTooltip="Enter color of fur such as tortie, grey, calico, etc." matTooltipPosition="left"
+                formControlName="color" [ngClass]="{ 'is-invalid': submitted && f['color'].errors }">
+            <div *ngIf="submitted && f['color'].errors" class="invalid-feedback">
+                <div *ngIf="f['color'].errors['required']">Color is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" name ="image" class="form-control" id="image" formControlName="image" rows="4" cols="50" accept="image/png, image/jpeg"/>
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Log Cat</button>
+        </div>
+        <p  *ngIf="showSubmitErrorMessage" class="showSubmitErrorMessage">Unable to Submit. Please Try Again!</p>
+        <div *ngIf="showSuccessMessage" class="successMessage">Success! Thank you For Contacting Us!</div>
+
+    </form>
+</div>
+
+<br>
+<br>

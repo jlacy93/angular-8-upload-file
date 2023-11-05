@@ -121,5 +121,8 @@
         }
       }
     }},
-  "defaultProject": "Angular8UploadFile"
+  "defaultProject": "Angular8UploadFile",
+  "cli": {
+    "analytics": false
+  }
 }

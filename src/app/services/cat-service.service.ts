@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cat } from '../model/cat';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +14,18 @@ export class CatserviceService {
 
   log(data: any, file: File): Observable<any>{
     const formData: FormData = new FormData();
-      formData.append('body', data)
-      formData.append('file', file)
+      formData.append('cat', data);
+      formData.append('file', file);
     
-    
-    return this.http.post('http://localhost:8080/log', formData, {responseType: 'json'})
+    return this.http.post('http://localhost:8080/saveCat', formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
   }
 
-
-  // private baseUrl = 'http://localhost:8080';
-
-  // constructor(private http: HttpClient) { }
-
-  // upload(file: File): Observable<HttpEvent<any>> {
-  //   const formData: FormData = new FormData();
-
-  //   formData.append('file', file);
-
-  //   const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
-  //     reportProgress: true,
-  //     responseType: 'json'
-  //   });
-
-  //   return this.http.request(req);
-  // }
-
-  // getFiles(): Observable<any> {
-  //   return this.http.get(`${this.baseUrl}/files`);
-  // }
+  find(): Observable<Cat[]> {
+    console.log('Find All Cats');
+    return this.http.get<Cat[]>(`http://localhost:8080/cat`);
+  }
 
 }

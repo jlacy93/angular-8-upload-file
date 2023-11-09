@@ -14,6 +14,7 @@ import { CatserviceService } from '../services/cat-service.service';
   styleUrls: ['./log-cat.component.css']
 })
 export class LogCatComponent implements OnInit{
+  formvalue : string;
   currentFile: File;
   selectedFiles: FileList;
   catForm!: FormGroup;
@@ -34,12 +35,18 @@ export class LogCatComponent implements OnInit{
         microchipNumber: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required]),
         color: new FormControl('', [Validators.required]),
-      }
+        image: new FormControl(),
+        fileName: new FormControl(),
+        type: new FormControl()      }
     );
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.catForm.controls;
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
   logCat() {
@@ -57,7 +64,10 @@ export class LogCatComponent implements OnInit{
     }
   
     if(this.catForm.valid){
-    this.catservice.log(this.catForm.value, this.currentFile).subscribe(
+      console.log(this.catForm.value);
+      console.log(this.currentFile);
+      this.formvalue = JSON.stringify(this.catForm.value);
+    this.catservice.log(this.formvalue, this.currentFile).subscribe(
 
       (result) => {
         {          

@@ -7,13 +7,15 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
 import { LogCatComponent } from './log-cat/log-cat.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CatcardComponent } from './catcard/catcard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadFilesComponent,
-    LogCatComponent
+    LogCatComponent,
+    CatcardComponent
   ],
   imports: [
     BrowserModule,

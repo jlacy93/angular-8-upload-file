@@ -1,6 +1,8 @@
+<br>
+<br>
 <div class="title">Log a Cat</div>
 <div class="cat-form-container">
-    <form [formGroup]="catForm"(ngSubmit)="logCat()" >
+    <form [formGroup]="catForm" enctype="multipart/form-data" (ngSubmit)="logCat()" >
         <span class = "description">
             Use the form below to log a captured cat. <br>
             Please include any updated medical history.
@@ -36,15 +38,13 @@
         </div>
 
         <div class="form-group">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" name ="image" class="form-control" id="image" formControlName="image" rows="4" cols="50" accept="image/png, image/jpeg"/>
+            <label for="image" class="form-label" >Image</label>
+            <input type="file" name ="image" class="form-control" id="image" formControlName="image" rows="4" cols="50" accept="image/png, image/jpeg" (change)="selectFile($event)"/>
         </div>
 
         <div class="btn-container">
-            <button type="submit" class="btn btn-primary">Log Cat</button>
+            <button type="submit" class="btn btn-primary" >Log Cat</button>
         </div>
-        <p  *ngIf="showSubmitErrorMessage" class="showSubmitErrorMessage">Unable to Submit. Please Try Again!</p>
-        <div *ngIf="showSuccessMessage" class="successMessage">Success! Thank you For Contacting Us!</div>
 
     </form>
 </div>
